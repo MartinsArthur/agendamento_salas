@@ -1,12 +1,17 @@
-import streamlit as st
 from pages import cadastro, agendamento, consulta
 
-st.sidebar.title("📌 Menu")
-pagina = st.sidebar.radio("Ir para:", ["Cadastro de Salas", "Agendamento de Salas", "Consulta de Agendamentos"])
+import streamlit as st
 
-if pagina == "Cadastro de Salas":
-    cadastro.tela()
-elif pagina == "Agendamento de Salas":
-    agendamento.tela()
-elif pagina == "Consulta de Agendamentos":
-    consulta.tela()
+def main():
+    st.sidebar.title("Navegação")
+    escolha = st.sidebar.radio("Ir para:", ["Agendamento", "Cadastro", "Consulta"])
+
+    if escolha == "Agendamento":
+        agendamento.tela()
+    elif escolha == "Cadastro":
+        cadastro.tela()
+    else:
+        consulta.tela()
+
+if __name__ == "__main__":
+    main()
